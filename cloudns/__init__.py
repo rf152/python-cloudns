@@ -17,4 +17,4 @@ __author__ = 'Richard Franks';
 __license__ = 'MIT';
 __copyright__ = 'Copyright 2016 Richard Franks';
 
-from api import api;
+from .api import api;
