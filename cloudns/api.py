@@ -1,4 +1,4 @@
-import requests;
+import requests
 
 class api:
 	def __init__(self, username, password):
@@ -134,7 +134,7 @@ class api:
 			if k == 'self':
 				continue;
 			if v is not None:
-				params += '&{}={}'.format(k, v);
+				params += '&{}={}'.format(k.replace('_', '-'), v);
 		
 		params = params[1:];
 		return self._do_request('dns/mod-record', params);
