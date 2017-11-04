@@ -3,21 +3,25 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class api:
-    def __init__(self, username, password):
+class Api(object):
+    def __init__(self, username, password, sub_auth=False):
         self._user = username
         self._pass = password
+        if sub_auth:
+            self._auth_type = 'sub-auth-id'
+        else:
+            self._auth_type = 'auth-id'
 
         # Currently hard-coded, but could offer XML in the future
         self._type = 'json'
 
-        self._urlbase = 'https://api.cloudns.net/{0}.{1}?auth-id={2}&auth-password={3}&{0}'.format(
-            '{}', self._type, self._user, self._pass)
+        self._urlbase = 'https://api.cloudns.net/{0}.{1}?{4}={2}&auth-password={3}&{0}'.format(
+            '{}', self._type, self._user, self._pass, self._auth_type)
 
     def _do_request(self, function, params=''):
         logger.debug("Performing request")
         response = self._do_raw_request(function, params)
-        logger.debug("Response: {}".format(response))
+        logger.debug("Response: %s", format(response))
         if self._type == 'json':
             return response.json()
 
@@ -35,7 +39,8 @@ class api:
         return self._do_request('dns/available-name-servers')
 
     def register(self, domain_name, zone_type, ns='', master_ip=''):
-        params = 'domain-name={}&zone-type={}&ns={}&master-ip={}'.format(domain_name, zone_type, ns, master_ip)
+        params = 'domain-name={}&zone-type={}&ns={}&master-ip={}'.format(domain_name,
+                                                                         zone_type, ns, master_ip)
         return self._do_request('dns/register', params)
 
     def delete(self, domain_name):
