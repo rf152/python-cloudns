@@ -12,7 +12,7 @@ This is a library that allows simple access to the ClouDNS HTTP API.
 """
 
 __title__ = 'cloudns'
-__version__ = '0.1a'
+__version__ = '0.2a'
 __author__ = 'Richard Franks'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2016 Richard Franks'
