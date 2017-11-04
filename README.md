@@ -15,7 +15,7 @@ Using python-cloudns is relatively simple
 ```python
 import cloudns
 
-a = cloudns.api('username', 'password');
-a.test_login();
+a = cloudns.api('username', 'password')
+a.test_login()
 ```
 
