@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 
 setup(
-    name='python-cloudns',
+    name='cloudnsapi',
     version='0.0.2',
     description="ClouDNS API Wrapper",
     author="R Franks",
@@ -24,6 +24,6 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
     ],
-    packages=['python-cloudns'],
+    packages=['cloudnsapi'],
     install_requires=['requests']
 )
